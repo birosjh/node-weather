@@ -11,7 +11,7 @@ var Now = {
                     <div class="media-content">
                     <div class="content">
                         <p>
-                        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                        <strong>{{ weather.name }}</strong> <small>@johnsmith</small> <small>31m</small>
                         <br>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
                         </p>
@@ -33,5 +33,25 @@ var Now = {
                 </article>
             </div>
         </main-layout>
-     `
+     `,
+    data() {
+        return {
+            weather: ''
+        }
+    },
+    created() {
+        this.load().then((result) => { 
+            this.weather = result.data
+            console.log(this.weather)
+        })
+    },
+    methods: {
+        async load() {
+            try {
+                return await axios.get('/api/now')
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
 }
