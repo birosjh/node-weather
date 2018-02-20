@@ -5,15 +5,15 @@ var Now = {
                 <article class="media">
                     <div class="media-left">
                     <figure class="image is-64x64">
-                        <img src="https://www.metaweather.com/static/img/weather/png/c.png" alt="Image">
+                        <img :src="weather.icon" alt="Image">
                     </figure>
                     </div>
                     <div class="media-content">
                     <div class="content">
                         <p>
-                        <strong>{{ weather.name }}</strong> <small>@johnsmith</small> <small>31m</small>
+                        <strong>{{ weather.name }}</strong> <small>{{ weather.temp }}C / {{ weather.temp }}F</small>
                         <br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                        {{ weather.description }}
                         </p>
                     </div>
                     <nav class="level is-mobile">

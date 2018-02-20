@@ -8,6 +8,13 @@ exports.now = async function (req, res) {
     }
 
     var weather = await getWeather(parameters);
+    weather = {
+        name: weather.name,
+        description: weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1),
+        temp: weather.main.temp,
+        icon: 'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'
+    }
+
     console.log(weather)
     res.send(weather);
 };
