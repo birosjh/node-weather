@@ -15,18 +15,6 @@ const app = new Vue({
     data: {
         currentRoute: window.location.pathname,
     },
-    created() {
-        var that = this;
-
-        axios.get('/daily')
-            .then(function (response) {
-                that.title = response.data;
-                console.log(that.title);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },
     computed: {
         ViewComponent() {
             return routes[this.currentRoute] || NotFound
