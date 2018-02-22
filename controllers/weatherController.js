@@ -7,7 +7,7 @@ exports.now = async function (req, res) {
         appid: process.env.WEATHER_API
     }
 
-    var weather = await getWeather(parameters);
+    var weather = await getWeather('weather', parameters);
     weather = {
         name: weather.name,
         description: weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1),
@@ -19,15 +19,21 @@ exports.now = async function (req, res) {
     res.send(weather);
 };
 
-exports.daily = function(req, res) {
+exports.daily = async function(req, res) {
+    var parameters = {
+        lat: "35",
+        lon: "139",
+        appid: process.env.WEATHER_API
+    }
     
-    getWeather();
+    var weather = await getWeather('forecast', parameters);
+    console.log(weather);
     res.send('Hello World!')
 };
 
-async function getWeather(parameters) {
+async function getWeather(type, parameters) {
     try {
-        let response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+        let response = await axios.get('https://api.openweathermap.org/data/2.5/' + type, {
             params: parameters
         });
         return response.data;
