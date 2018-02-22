@@ -17,11 +17,11 @@ var mainLayout = {
                     <vue-link class="navbar-item" href="/">
                         Now
                     </vue-link>
-                    <vue-link class="navbar-item" href="/day">
-                        Today
+                    <vue-link class="navbar-item" href="/five-day">
+                        Five Day
                     </vue-link>
-                    <vue-link class="navbar-item" href="/week">
-                        Weekly
+                    <vue-link class="navbar-item" href="/two-week">
+                        Two Week
                     </vue-link>
                 </div>
             </div>
