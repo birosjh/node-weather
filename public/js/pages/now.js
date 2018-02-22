@@ -40,12 +40,24 @@ var Now = {
         }
     },
     created() {
-        this.load().then((result) => { 
-            this.weather = result.data
-            console.log(this.weather)
-        })
+        this.setup()
     },
     methods: {
+        setup() {
+            var that = this;
+            var interval = 1000 * 60; // 1 minutes
+
+            that.load().then((result) => {
+                that.weather = result.data
+            })
+
+            setInterval(function () {
+                that.load().then((result) => {
+                    that.weather = result.data
+                })
+                console.log('updated')
+            }, interval); 
+        },
         async load() {
             try {
                 return await axios.get('/api/now')
