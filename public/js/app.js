@@ -2,12 +2,11 @@ Vue.component('main-layout', mainLayout)
 Vue.component('vue-link', vueLink)
 
 const NotFound = { template: '<main-layout><p>Page not found</p></main-layout>' }
-const Week = { template: '<main-layout><p>week page</p></main-layout>' }
 
 const routes = {
     '/': Now,
-    '/day': Day,
-    '/week': Week
+    '/five-day': FiveDay,
+    '/two-week': TwoWeek
 }
 
 const app = new Vue({
