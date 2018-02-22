@@ -27,8 +27,10 @@ exports.fiveDays = async function(req, res) {
     }
     
     var weather = await getWeather('forecast', parameters);
-    console.log(weather);
-    res.send('Hello World!')
+    weather = weather.list.map( (x) => ({ date: x.dt, weather: x.weather }))
+
+    console.log(weather)
+    res.send(weather)
 };
 
 async function getWeather(type, parameters) {
