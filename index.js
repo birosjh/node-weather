@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/api/now', weather_controller.now)
-app.get('/api/daily', weather_controller.daily)
+app.get('/api/five-day', weather_controller.fiveDays)
 
 app.listen(3000, function () {
     console.log('Listening on port 3000...')

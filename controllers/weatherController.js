@@ -19,7 +19,7 @@ exports.now = async function (req, res) {
     res.send(weather);
 };
 
-exports.daily = async function(req, res) {
+exports.fiveDays = async function(req, res) {
     var parameters = {
         lat: "35",
         lon: "139",
