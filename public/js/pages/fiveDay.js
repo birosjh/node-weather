@@ -1,19 +1,19 @@
 var FiveDay = {
     template: `
     <main-layout>
-        <div class="box">
+        <div v-for="day in weather" class="box">
                 <article class="media">
                     <div class="media-left">
                     <figure class="image is-64x64">
-                        <img :src="weather.icon" alt="Image">
+                        <img :src="day.icon" alt="Image">
                     </figure>
                     </div>
                     <div class="media-content">
                     <div class="content">
                         <p>
-                        <strong>{{ weather.name }}</strong> <small>{{ weather.temp }}C / {{ weather.temp }}F</small>
+                        <strong>{{ day.date }}</strong> <small>{{ day.temp }}C / {{ day.temp }}F</small>
                         <br>
-                        {{ weather.description }}
+                        {{ day.description }}
                         </p>
                     </div>
                     <nav class="level is-mobile">
@@ -48,6 +48,7 @@ var FiveDay = {
             var interval = 1000 * 60; // 1 minutes
 
             that.load().then((result) => {
+                console.log(result.data)
                 that.weather = result.data
             })
 
@@ -60,7 +61,7 @@ var FiveDay = {
         },
         async load() {
             try {
-                return await axios.get('/api/daily')
+                return await axios.get('/api/five-day')
             } catch (err) {
                 console.log(err)
             }
